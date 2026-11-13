@@ -13,6 +13,7 @@
 @if ($brandCss = \App\Support\Brand::cssVars())<style id="brand-vars">{!! $brandCss !!}</style>@endif
 <script>
   window.LANG = @json(app()->getLocale());
+  window.BRAND_NAME = @json(\App\Support\Brand::name());
   window.LANG_TAG = @json(\App\Support\Locales::tag(app()->getLocale()));
   window.MAIL_DOMAIN = @json(config('inbound.domain'));
   window.I18N = @json(\App\Support\Locales::dictionary(app()->getLocale()));

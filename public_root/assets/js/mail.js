@@ -25,6 +25,11 @@
     return I18N[key] || key;
   }
 
+  // Sekme başlıkları önce kurulumun kendi markasını kullanır (epix.tr), yoksa ürün adını.
+  function brandName() {
+    return window.BRAND_NAME || t("appName");
+  }
+
   function applyChrome() {
     document.documentElement.lang = window.LANG_TAG || "en";
     document.documentElement.setAttribute("data-theme", theme);
@@ -34,14 +39,14 @@
     document.querySelectorAll("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
     document.querySelectorAll("[data-lang]").forEach((btn) => { btn.classList.toggle("active", btn.dataset.lang === lang); });
     document.querySelectorAll(".lang-code").forEach((el) => { el.textContent = lang.replace("_", "-").toUpperCase(); });
-    if (page === "settings") document.title = t("accountSettings") + " · " + t("appName");
+    if (page === "settings") document.title = t("accountSettings") + " · " + brandName();
     document.querySelectorAll("[data-action='theme'] i").forEach((icon) => { icon.className = theme === "dark" ? "bi bi-sun" : "bi bi-moon"; });
     document.querySelectorAll("[data-action='theme']").forEach((btn) => {
       btn.setAttribute("aria-label", theme === "dark" ? t("themeToLight") : t("themeToDark"));
     });
-    if (page === "login") document.title = t("appName");
-    else if (page === "forgot") document.title = t("forgotTitle") + " · " + t("appName");
-    else if (page === "reset") document.title = t("newPwTitle") + " · " + t("appName");
+    if (page === "login") document.title = brandName();
+    else if (page === "forgot") document.title = t("forgotTitle") + " · " + brandName();
+    else if (page === "reset") document.title = t("newPwTitle") + " · " + brandName();
   }
 
   // The server renders every page in the chosen language, so a change reloads the page.
@@ -626,10 +631,10 @@
     const unread = (state.counts.inbox || {}).unread || 0;
     if (state.mode === "compose") {
       document.getElementById("composeHeading").textContent = state.draftId ? t("editDraft") : t("newMessage");
-      document.title = (state.draftId ? t("editDraft") : t("newMessage")) + " · " + t("appName");
+      document.title = (state.draftId ? t("editDraft") : t("newMessage")) + " · " + brandName();
       return;
     }
-    document.title = (unread ? "(" + unread + ") " : "") + folderName(state.folder) + " · " + t("appName");
+    document.title = (unread ? "(" + unread + ") " : "") + folderName(state.folder) + " · " + brandName();
     renderList();
     renderReader();
   }
@@ -664,7 +669,7 @@
       state.loading = false;
       if (token === listToken && state.mode === "mail") {
         const unread = (state.counts.inbox || {}).unread || 0;
-        document.title = (unread ? "(" + unread + ") " : "") + folderName(state.folder) + " · " + t("appName");
+        document.title = (unread ? "(" + unread + ") " : "") + folderName(state.folder) + " · " + brandName();
         renderNav();
         renderList();
         if (!keepSelection) renderReader();
@@ -688,7 +693,7 @@
       state.counts = data.counts;
       renderNav();
       loadBell();
-      document.title = folderName(state.folder) + " · " + t("appName");
+      document.title = folderName(state.folder) + " · " + brandName();
     } catch (e) {
       if (e.message !== "auth") toast(t("error"));
     }

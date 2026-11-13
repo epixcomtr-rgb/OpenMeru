@@ -2,14 +2,14 @@
 <html lang="{{ \App\Support\Locales::tag(app()->getLocale()) }}" data-theme="light">
 <head>
   @include('partials.head')
-  <title>@yield('title') · OpenMeru Mail</title>
+  <title>@yield('title') · {{ \App\Support\Brand::name() }}</title>
 </head>
 <body data-page="legal">
   <div class="legal-wrap">
     <header class="legal-head">
       <a class="side-brand" href="/" style="padding:0">
-        <img class="logo-mark sm" src="/assets/brand/mark.png" alt="OpenMeru">
-        <span><strong>OpenMeru</strong><span>MAIL</span></span>
+        @include('partials.logo', ['class' => 'sm'])
+        <span><strong>{{ \App\Support\Brand::wordmark() }}</strong><span>{{ \App\Support\Brand::product() }}</span></span>
       </a>
       <div class="d-flex align-items-center gap-1">
         @include('partials.lang-menu')

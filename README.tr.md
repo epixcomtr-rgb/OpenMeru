@@ -122,3 +122,52 @@ sudo chown -R www-data:www-data storage/framework/views
 - Lisans: **MIT** (`LICENSE`)
 - Özgün proje ve tüm tasarım: **Weslley Harakawa** — <https://github.com/WeslleyHarakawa/OpenMeru>
 - Türkçe çeviri: [epixcomtr-rgb](https://github.com/epixcomtr-rgb) (epix.tr)
+
+---
+
+## Marka: epix.tr görsel kimliği
+
+Bu fork, epix.tr kurulumunda OpenMeru'nun kendi kimliği yerine epix.tr kimliğini gösterir.
+Marka ayarları **kod içinde değil, veritabanında** (`settings` tablosu) tutulur ve normalde
+**/admin → Ayarlar → Genel** ekranından yönetilir.
+
+| Ayar | Değer |
+|---|---|
+| `brand_name` | `epix.tr` (sekme başlıkları, giriş sayfası, kenar çubuğu, admin başlığı) |
+| `brand_logo` | `branding/logo-*.png` — www.epix.tr logosu |
+| `brand_icon` | `branding/icon-*.png` — kare simge (kenar çubuğu, admin başlığı, uygulama ikonu) |
+| `brand_favicon` | `branding/favicon-*.png` — tarayıcı sekmesi |
+| `brand_background` | `branding/background-*.png` — giriş sayfası arka planı (teal → navy gradyan + lime ışıltı) |
+| `brand_primary` | `#16404b` (epix.tr `--blue`: düğmeler, bağlantılar, vurgular) |
+| `brand_secondary` | `#0e2a31` (epix.tr `--navy`: hover/gradyan ucu) |
+
+Dosyalar `storage/app/private/branding/` altında durur ve `/brand/{logo|icon|favicon|background}`
+adresinden servis edilir (izinler: `EpixHostx:www-data`, 640).
+
+epix.tr paleti: `--blue #16404b`, `--navy #0e2a31`, `--lime #e2ff5e`, `--lime-soft #f0fcc2`,
+`--bg-soft #f6f8f3`. Arayüzde lime yalnızca koyu zeminlerde vurgu olarak kullanılır
+(logo, giriş paneli dalgaları), bu yüzden ana renk teal seçildi: düğmelerde beyaz metinle
+okunabilir kalıyor.
+
+### Marka için yapılan kod değişiklikleri
+
+| Dosya | Değişiklik |
+|---|---|
+| `resources/views/partials/head.blade.php` | `window.BRAND_NAME` eklendi (JS'e marka adı) |
+| `public_root/assets/js/mail.js` | `brandName()` yardımcısı; sekme başlıkları artık `t("appName")` yerine marka adını kullanıyor |
+| `resources/views/partials/footer.blade.php` | Telif satırı marka duyarlı: "© 2026 epix.tr" (marka ayarlanmamışsa upstream bağlantısı) |
+| `resources/views/legal/layout.blade.php` | Gizlilik/Koşullar başlığı ve logosu markadan geliyor |
+| `resources/views/admin/layout.blade.php` | Admin başlığı "epix.tr Admin" + marka ikonu |
+| `resources/views/auth/layout.blade.php` | Giriş panelindeki dalga renkleri kırmızı gölgeden teal/lime tona çevrildi |
+
+> **Not (koyu tema):** OpenMeru tek bir `--brand` rengi kullanır; koyu temada da `#16404b`
+> geçerlidir. Koyu temayı ağırlıklı kullanacaksanız `brand_primary` için daha açık bir teal
+> (ör. `#4f8f96`) seçmek bağlantı kontrastını iyileştirir.
+
+### Marka ayarlarını değiştirmek
+
+Normalde **/admin → Ayarlar → Genel** (logo, simge, favicon, arka plan, renkler).
+`/admin` girişi parola + e-postayla gelen 6 haneli kodu ister; kodun gidebilmesi için
+**Ayarlar → Gönderim**'deki SMTP'nin (Brevo) çalışıyor olması gerekir. SMTP yoksa ayarlar
+veritabanından da yazılabilir (`settings` tablosu, `brand_*` anahtarları) ve dosyalar
+`storage/app/private/branding/` altına konur.

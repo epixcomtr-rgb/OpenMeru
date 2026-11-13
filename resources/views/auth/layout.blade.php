@@ -10,9 +10,9 @@
     @php($bg = \App\Support\Brand::backgroundUrl())
     <section class="brand{{ $bg ? ' has-bg' : '' }}{{ \App\Support\Brand::backgroundIsDefault() ? ' default-bg' : '' }}" aria-hidden="true"@if ($bg) style="--brand-bg:url('{{ $bg }}')"@endif>
       <svg class="brand-waves" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice">
-        <path fill="rgba(255,255,255,.12)" d="M0 220C160 80 280 340 520 180C680 80 740 240 800 150V0H0Z"/>
-        <path fill="rgba(255,255,255,.08)" d="M-80 700C80 540 220 860 460 700C680 560 760 820 900 680L900 980C640 820 420 1040 180 860C0 740-40 860-80 800Z"/>
-        <path fill="rgba(60,0,0,.28)" d="M0 980C180 860 300 1140 560 980C720 860 760 1080 800 1000V1200H0Z"/>
+        <path fill="rgba(226,255,94,.12)" d="M0 220C160 80 280 340 520 180C680 80 740 240 800 150V0H0Z"/>
+        <path fill="rgba(255,255,255,.07)" d="M-80 700C80 540 220 860 460 700C680 560 760 820 900 680L900 980C640 820 420 1040 180 860C0 740-40 860-80 800Z"/>
+        <path fill="rgba(14,42,49,.40)" d="M0 980C180 860 300 1140 560 980C720 860 760 1080 800 1000V1200H0Z"/>
       </svg>
       <div class="brand-lockup">
         @include('partials.logo', ['class' => 'lg'])
