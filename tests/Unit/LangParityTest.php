@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-/** Every interface text exists in all ten languages: a key added to en.json must be translated everywhere. */
+/** Every interface text exists in all eleven languages: a key added to en.json must be translated everywhere. */
 class LangParityTest extends TestCase
 {
     public function test_every_language_has_every_key(): void
@@ -13,7 +13,7 @@ class LangParityTest extends TestCase
         $en = json_decode((string) file_get_contents($dir.'/en.json'), true);
         $this->assertNotEmpty($en);
 
-        $languages = ['pt', 'pt_BR', 'es', 'fr', 'de', 'it', 'nl', 'ru', 'zh'];
+        $languages = ['pt', 'pt_BR', 'es', 'fr', 'de', 'it', 'nl', 'ru', 'zh', 'tr'];
         foreach ($languages as $locale) {
             $other = json_decode((string) file_get_contents($dir.'/'.$locale.'.json'), true);
             $missing = array_values(array_diff(array_keys($en), array_keys($other)));

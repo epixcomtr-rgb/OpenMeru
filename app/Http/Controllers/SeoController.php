@@ -63,7 +63,7 @@ License: MIT
 - Admin panel at /admin: create, search, open and delete mailboxes on your domain; admins sign in with a password plus an emailed code.
 - Private mailboxes with inbox, sent, drafts, starred, archive, spam and trash; rich editor, Cc/Bcc, attachments up to 25 MB, signatures, replies, auto-forwarding.
 - Two-factor authentication (TOTP: Google Authenticator, Authy, ...) with recovery codes; the admin can require it for every account.
-- Optional self-service sign-up, push notifications, 10 interface languages: {$languages}.
+- Optional self-service sign-up, push notifications, 11 interface languages: {$languages}.
 - Branding: name, logo, icon, favicon, sign-in background and colours.
 - Sending presets: Brevo (default), SMTP2GO, Mailgun, Postmark, SendGrid, Amazon SES, Resend, or any SMTP server.
 - Self-updating: each install checks {$base}/version daily and updates itself (database backup, new code, dependencies, migrations); works with or without git.

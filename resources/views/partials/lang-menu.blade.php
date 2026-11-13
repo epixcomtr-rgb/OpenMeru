@@ -1,4 +1,4 @@
-{{-- Language picker: globe button and a two-column list of the ten languages. --}}
+{{-- Language picker: globe button and a two-column list of the eleven languages. --}}
 <div class="dropdown">
   <button class="icon-btn lang-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{{ __('language') }}">
     <i class="bi bi-globe2"></i><span class="lang-code">{{ strtoupper(str_replace('_', '-', app()->getLocale())) }}</span>

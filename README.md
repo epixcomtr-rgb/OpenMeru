@@ -21,8 +21,10 @@ Open-source webmail for your own domain. Create `you@yourdomain.com` mailboxes f
 - Rich-text editor, attachments, Cc/Bcc, drafts, stars, spam, trash and search
 - Two-factor authentication (TOTP), push notifications, profile photo, signature and auto-forwarding
 - Your name, logo, icon and colours on every screen; self-updating from openmeru.com
-- 10 languages: English, Português (BR and PT), Español, Français, Deutsch, Italiano, Nederlands, Русский and 中文
+- 11 languages: English, Português (BR and PT), Español, Français, Deutsch, Italiano, Nederlands, Русский, 中文 and Türkçe
 - Light and dark themes, built for mobile
+
+Türkçe README (bu fork): [README.tr.md](README.tr.md)
 
 Website: <https://openmeru.com>. Live demo (read-only): [mailbox](https://openmeru.com/demo) and [admin](https://openmeru.com/demo/admin).
 

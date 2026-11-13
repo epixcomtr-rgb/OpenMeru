@@ -171,7 +171,7 @@ class McpController extends Controller
 Open-source (MIT) self-hosted webmail for one domain. No mail server to run:
 - Sending: Brevo (default, free tier 300/day) or any SMTP relay (SMTP2GO, Mailgun, Postmark, SendGrid, Amazon SES, Resend, custom).
 - Receiving: Cloudflare Email Routing (free) catches *@domain and hands each message to a small Email Worker, which forwards a copy to a Gmail and POSTs the message to the install (/hooks/inbound, shared secret INBOUND_SECRET).
-- Admin panel at /admin (password + emailed 6-digit code), mailboxes at the site root, 2FA (TOTP), push notifications, 10 languages, branding (name, logo, icon, favicon, colours, sign-in background), self-updating from {$base}/version.
+- Admin panel at /admin (password + emailed 6-digit code), mailboxes at the site root, 2FA (TOTP), push notifications, 11 languages, branding (name, logo, icon, favicon, colours, sign-in background), self-updating from {$base}/version.
 
 Requirements on the server:
 - Linux VPS, PHP 8.5+ with pdo_mysql mbstring openssl dom fileinfo curl ctype tokenizer xml, Composer, nginx or Apache. CloudPanel is the easy path (site user, document root, Let's Encrypt). git is optional.

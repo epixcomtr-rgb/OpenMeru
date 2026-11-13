@@ -5,7 +5,7 @@ namespace App\Support;
 use Illuminate\Http\Request;
 
 /**
- * The ten interface languages, their native names and the matching
+ * The eleven interface languages, their native names and the matching
  * Intl/HTML codes. The choice lives in the "openmeru_lang" cookie.
  */
 class Locales
@@ -24,6 +24,7 @@ class Locales
         'nl' => ['Nederlands', 'nl-NL'],
         'ru' => ['Русский', 'ru-RU'],
         'zh' => ['中文', 'zh-CN'],
+        'tr' => ['Türkçe', 'tr-TR'],
     ];
 
     public static function supported(?string $code): bool

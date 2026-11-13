@@ -320,7 +320,7 @@
   function renderList() {
     document.getElementById("listTitle").textContent = folderName(state.folder);
     const items = state.messages;
-    rangeEl.textContent = items.length ? t("admin.showing").replace(":from", 1).replace(":to", items.length).replace(":total", state.total) : "";
+    rangeEl.textContent = items.length ? t("admin.showing").replace(":total", state.total).replace(":from", 1).replace(":to", items.length) : "";
     if (state.loading && !items.length) {
       rowsEl.innerHTML = '<div class="empty">' + esc(t("loading")) + "</div>";
       return;
